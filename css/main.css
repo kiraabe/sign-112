@@ -2457,10 +2457,10 @@ blockquote span{
 }
 
 .video-showcase-subtitle {
-    font-size: 20px;
+    font-size: 32px;
     color: rgba(255, 255, 255, 0.9);
     margin-bottom: 40px;
-    font-weight: 300;
+    font-weight: 600;
     line-height: 1.6;
 }
 
