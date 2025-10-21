@@ -2598,6 +2598,13 @@ blockquote span{
     }
 }
 
+/* Basic media protection (best-effort; cannot fully prevent copying) */
+img, video {
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
 /* ==========================================================================
    Scroll To Top
    ========================================================================== */

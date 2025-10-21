@@ -427,4 +427,38 @@
             }
         });
     });
+    // Basic content protection (best-effort; cannot fully prevent copying)
+    (function(){
+        // Disable right-click on images/videos and lightbox triggers
+        document.addEventListener('contextmenu', function(e){
+            if (e.target && e.target.closest('img, video, .img-popup, .venobox')) {
+                e.preventDefault();
+            }
+        });
+        // Disable drag-save on media
+        function protectMedia(){
+            document.querySelectorAll('img, video').forEach(function(el){
+                el.setAttribute('draggable', 'false');
+                el.addEventListener('dragstart', function(ev){ ev.preventDefault(); }, { passive: false });
+            });
+        }
+        protectMedia();
+        // Re-apply on DOM mutations (e.g., carousels)
+        var mo = new MutationObserver(protectMedia);
+        mo.observe(document.documentElement, { childList: true, subtree: true });
+        // Block common devtools and save shortcuts
+        document.addEventListener('keydown', function(e){
+            var k = (e.key || '').toLowerCase();
+            if (
+                k === 'f12' ||
+                ((e.ctrlKey || e.metaKey) && e.shiftKey && (k === 'i' || k === 'j' || k === 'c')) ||
+                ((e.ctrlKey || e.metaKey) && (k === 's' || k === 'u' || k === 'p'))
+            ){
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        }, true);
+    })();
+
 })(jQuery);
