@@ -764,6 +764,31 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPH8h1UpcK01BdcvoZeOzq-_wJqRxN1Pc"></script>
 		<!-- Main JS -->
 		<script src="js/main.js?v=2"></script>
+        <script>
+        (function(){
+            // Disable context menu on media
+            document.addEventListener('contextmenu', function(e){
+                if (e.target && e.target.closest('img, video, .img-popup, .venobox')) { e.preventDefault(); }
+            });
+            // Disable drag-save on media
+            function protectMedia(){
+                document.querySelectorAll('img, video').forEach(function(el){
+                    el.setAttribute('draggable','false');
+                    el.style.userSelect = 'none';
+                    el.addEventListener('dragstart', function(ev){ ev.preventDefault(); }, { passive:false });
+                });
+            }
+            protectMedia();
+            new MutationObserver(protectMedia).observe(document.documentElement,{childList:true,subtree:true});
+            // Block common devtools/save shortcuts
+            document.addEventListener('keydown', function(e){
+                var k=(e.key||'').toLowerCase();
+                if(k==='f12'||((e.ctrlKey||e.metaKey)&&e.shiftKey&&(k==='i'||k==='j'||k==='c'))||((e.ctrlKey||e.metaKey)&&(k==='s'||k==='u'||k==='p'))){
+                    e.preventDefault(); e.stopPropagation(); return false;
+                }
+            }, true);
+        })();
+        </script>
 
     </body>
 </html>
