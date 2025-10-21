@@ -429,12 +429,10 @@
     });
     // Basic content protection (best-effort; cannot fully prevent copying)
     (function(){
-        // Disable right-click on images/videos and lightbox triggers
+        // Disable right-click globally
         document.addEventListener('contextmenu', function(e){
-            if (e.target && e.target.closest('img, video, .img-popup, .venobox')) {
-                e.preventDefault();
-            }
-        });
+            e.preventDefault();
+        }, true);
         // Disable drag-save on media
         function protectMedia(){
             document.querySelectorAll('img, video').forEach(function(el){
