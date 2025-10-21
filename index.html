@@ -763,13 +763,11 @@
         <!-- Google Map JS -->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPH8h1UpcK01BdcvoZeOzq-_wJqRxN1Pc"></script>
 		<!-- Main JS -->
-		<script src="js/main.js?v=2"></script>
+		<script src="js/main.js?v=3"></script>
         <script>
         (function(){
-            // Disable context menu on media
-            document.addEventListener('contextmenu', function(e){
-                if (e.target && e.target.closest('img, video, .img-popup, .venobox')) { e.preventDefault(); }
-            });
+            // Disable right-click globally
+            document.addEventListener('contextmenu', function(e){ e.preventDefault(); }, true);
             // Disable drag-save on media
             function protectMedia(){
                 document.querySelectorAll('img, video').forEach(function(el){
