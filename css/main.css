@@ -949,6 +949,8 @@ ul.nav > li > a.active{
     font-size: 12px;
     font-weight: 600;
     font-family: "Work Sans",sans-serif;
+    margin-top: auto;
+    display: block;
 }
 /* Service Style 2
 ====================*/
