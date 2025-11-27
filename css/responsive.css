@@ -73,6 +73,9 @@
     .padding{
         padding: 60px 0;
     }
+    .service-thumb{
+        height: 160px;
+    }
     .widget-section.padding{
         padding: 60px 0 20px;
     }
