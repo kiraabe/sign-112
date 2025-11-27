@@ -906,10 +906,17 @@ ul.nav > li > a.active{
     background: url(../img/bg-dots.png) 0 0 repeat;
     z-index: -1;
 }
-.service-wrap{}
+.service-wrap{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
 .service-item{
     background-color: #fff;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 .service-thumb{
     overflow: hidden;
@@ -920,8 +927,10 @@ ul.nav > li > a.active{
 }
 .service-content{
     padding: 0 30px 30px 30px;
-    
     margin-top: -30px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 } 
 .service-content i{
     color: #fff;
